@@ -1,0 +1,54 @@
+#!/bin/bash
+
+# Retrieve arguments
+domain=$1
+path=$2
+
+# Check domain/path availability
+sudo yunohost app checkurl $domain$path -a pydio
+if [[ ! $? -eq 0 ]]; then
+	exit 1
+fi
+
+mkdir ../upstream
+version=$(cat version)
+wget -O ../upstream/pydio-core.tar.gz http://sourceforge.net/projects/ajaxplorer/files/pydio/dev-channel/$version/pydio-core-$version.tar.gz
+tar xzf ../upstream/pydio-core.tar.gz -C ../upstream
+
+# Copy files to the right place
+final_path=/var/www/pydio
+
+sudo mkdir -p $final_path
+sudo cp -ar ../upstream/pydio-core-$version/* $final_path
+
+# Fix up permissions
+sudo chown -R www-data: $final_path
+
+# Database
+db_pwd=$(dd if=/dev/urandom bs=1 count=200 2> /dev/null | tr -c -d '[A-Za-z0-9]' | sed -n 's/\(.\{24\}\).*/\1/p')
+db_user=pydio
+sudo yunohost app initdb $db_user -p $db_pwd -s $(readlink -e ../conf/create.mysql)
+sudo yunohost app setting pydio mysqlpwd -v $db_pwd
+
+sed -i "s@YNH_MYSQL_PWD@$db_pwd@g" ../conf/bootstrap.json
+sudo mkdir -p $final_path/data/plugins/boot.conf
+sudo cp ../conf/bootstrap.json $final_path/data/plugins/boot.conf/bootstrap.json
+
+sudo touch $final_path/data/cache/admin_counted
+sudo touch $final_path/data/cache/first_run_passed
+# TODO php-fpm output_buffering OFF
+sudo touch $final_path/data/cache/diag_result.php
+
+sudo find $final_path -name "*" -type f -exec chmod 644 {} \;
+sudo find $final_path -name "*" -type d -exec chmod 755 {} \;
+
+# Nginx configuration
+sed -i "s@PATHTOCHANGE@$path@g" ../conf/nginx.conf
+sed -i "s@ALIASTOCHANGE@$final_path@g" ../conf/nginx.conf
+sudo cp ../conf/nginx.conf /etc/nginx/conf.d/$domain.d/pydio.conf
+sudo chown root: /etc/nginx/conf.d/$domain.d/pydio.conf
+sudo chmod 600 /etc/nginx/conf.d/$domain.d/pydio.conf
+
+# Reload Nginx and regenerate SSOwat conf
+sudo service nginx reload
+sudo yunohost app ssowatconf

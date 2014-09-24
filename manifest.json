@@ -1,0 +1,33 @@
+{
+    "name": "Pydio",
+    "id": "pydio",
+    "description": {
+        "en": "File sharing platform",
+        "fr": "Plateforme de partage de fichiers"
+    },
+    "developer": {
+        "name": "julienmalik",
+        "email": "julien.malik@paraiso.me",
+        "url": "https://github.com/julienmalik"
+    },
+    "multi_instance": "false",
+    "arguments": {
+        "install" : [
+            {
+                "name": "domain",
+                "ask": {
+                    "en": "Choose a domain for Pydio"
+                },
+                "example": "domain.org"
+            },
+            {
+                "name": "path",
+                "ask": {
+                    "en": "Choose a path for Pydio"
+                },
+                "example": "/pydio",
+                "default": "/pydio"
+            }
+        ]
+    }
+}
