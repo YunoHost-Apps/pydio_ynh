@@ -1,3 +1,4 @@
+* handle admin user properly
 * http_auth
 * user's home dirs
 * specific php-fpm with output_buffering OFF, higher upload limit, ...
