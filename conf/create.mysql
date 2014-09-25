@@ -100,7 +100,6 @@ CREATE TABLE `ajxp_log` (
 
 LOCK TABLES `ajxp_log` WRITE;
 /*!40000 ALTER TABLE `ajxp_log` DISABLE KEYS */;
-INSERT INTO `ajxp_log` VALUES (1,'2014-03-24 18:07:50','127.0.0.1','INFO','admin','AuthService','Log In	');
 /*!40000 ALTER TABLE `ajxp_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -124,7 +123,15 @@ CREATE TABLE `ajxp_plugin_configs` (
 
 LOCK TABLES `ajxp_plugin_configs` WRITE;
 /*!40000 ALTER TABLE `ajxp_plugin_configs` DISABLE KEYS */;
-INSERT INTO `ajxp_plugin_configs` VALUES ('core.ajaxplorer','a:2:{s:17:\"APPLICATION_TITLE\";s:5:\"Pydio\";s:16:\"DEFAULT_LANGUAGE\";s:2:\"en\";}'),('core.log','a:1:{s:22:\"UNIQUE_PLUGIN_INSTANCE\";a:3:{s:13:\"instance_name\";s:7:\"log.sql\";s:18:\"group_switch_value\";s:7:\"log.sql\";s:10:\"SQL_DRIVER\";a:2:{s:11:\"core_driver\";s:4:\"core\";s:18:\"group_switch_value\";s:4:\"core\";}}}'),('core.mq','a:1:{s:18:\"UNIQUE_MS_INSTANCE\";a:3:{s:13:\"instance_name\";s:6:\"mq.sql\";s:18:\"group_switch_value\";s:6:\"mq.sql\";s:10:\"SQL_DRIVER\";a:2:{s:11:\"core_driver\";s:4:\"core\";s:18:\"group_switch_value\";s:4:\"core\";}}}'),('core.notifications','a:2:{s:11:\"USER_EVENTS\";b:1;s:20:\"UNIQUE_FEED_INSTANCE\";a:3:{s:13:\"instance_name\";s:8:\"feed.sql\";s:18:\"group_switch_value\";s:8:\"feed.sql\";s:10:\"SQL_DRIVER\";a:2:{s:11:\"core_driver\";s:4:\"core\";s:18:\"group_switch_value\";s:4:\"core\";}}}'),('gui.ajax','a:1:{s:22:\"CUSTOM_WELCOME_MESSAGE\";s:16:\"Welcome to Pydio\";}');
+INSERT INTO `ajxp_plugin_configs` VALUES
+('authfront.http_basic', 'a:3:{s:19:"AJXP_PLUGIN_ENABLED";b:0;s:5:"ORDER";s:2:"10";s:13:"PROTOCOL_TYPE";s:10:"no_session";}'),
+('authfront.http_server', 'a:5:{s:19:"AJXP_PLUGIN_ENABLED";b:1;s:11:"CREATE_USER";b:1;s:10:"AJXP_ADMIN";s:0:"";s:5:"ORDER";s:1:"1";s:13:"PROTOCOL_TYPE";s:4:"both";}'),
+('authfront.session_login','a:3:{s:19:"AJXP_PLUGIN_ENABLED";b:0;s:5:"ORDER";s:2:"20";s:13:"PROTOCOL_TYPE";s:12:"session_only";}'),
+('core.ajaxplorer','a:2:{s:17:\"APPLICATION_TITLE\";s:5:\"Pydio\";s:16:\"DEFAULT_LANGUAGE\";s:2:\"en\";}'),
+('core.log','a:1:{s:22:\"UNIQUE_PLUGIN_INSTANCE\";a:3:{s:13:\"instance_name\";s:7:\"log.sql\";s:18:\"group_switch_value\";s:7:\"log.sql\";s:10:\"SQL_DRIVER\";a:2:{s:11:\"core_driver\";s:4:\"core\";s:18:\"group_switch_value\";s:4:\"core\";}}}'),
+('core.mq','a:1:{s:18:\"UNIQUE_MS_INSTANCE\";a:3:{s:13:\"instance_name\";s:6:\"mq.sql\";s:18:\"group_switch_value\";s:6:\"mq.sql\";s:10:\"SQL_DRIVER\";a:2:{s:11:\"core_driver\";s:4:\"core\";s:18:\"group_switch_value\";s:4:\"core\";}}}'),
+('core.notifications','a:2:{s:11:\"USER_EVENTS\";b:1;s:20:\"UNIQUE_FEED_INSTANCE\";a:3:{s:13:\"instance_name\";s:8:\"feed.sql\";s:18:\"group_switch_value\";s:8:\"feed.sql\";s:10:\"SQL_DRIVER\";a:2:{s:11:\"core_driver\";s:4:\"core\";s:18:\"group_switch_value\";s:4:\"core\";}}}'),
+('gui.ajax','a:1:{s:22:\"CUSTOM_WELCOME_MESSAGE\";s:16:\"Welcome to Pydio\";}');
 /*!40000 ALTER TABLE `ajxp_plugin_configs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -210,7 +217,6 @@ CREATE TABLE `ajxp_roles` (
 
 LOCK TABLES `ajxp_roles` WRITE;
 /*!40000 ALTER TABLE `ajxp_roles` DISABLE KEYS */;
-INSERT INTO `ajxp_roles` VALUES ('AJXP_USR_/admin','O:9:\"AJXP_Role\":7:{s:12:\"\0*\0groupPath\";N;s:9:\"\0*\0roleId\";s:15:\"AJXP_USR_/admin\";s:12:\"\0*\0roleLabel\";N;s:7:\"\0*\0acls\";a:5:{i:1;s:2:\"rw\";s:9:\"ajxp_user\";s:2:\"rw\";i:0;s:2:\"rw\";s:9:\"ajxp_conf\";s:2:\"rw\";s:11:\"fs_template\";s:2:\"rw\";}s:13:\"\0*\0parameters\";a:1:{s:19:\"AJXP_REPO_SCOPE_ALL\";a:1:{s:9:\"core.conf\";a:1:{s:17:\"USER_DISPLAY_NAME\";s:5:\"admin\";}}}s:10:\"\0*\0actions\";a:0:{}s:14:\"\0*\0autoApplies\";a:0:{}}'),('GUEST','O:9:\"AJXP_Role\":7:{s:12:\"\0*\0groupPath\";N;s:9:\"\0*\0roleId\";s:5:\"GUEST\";s:12:\"\0*\0roleLabel\";s:15:\"Guest user role\";s:7:\"\0*\0acls\";a:0:{}s:13:\"\0*\0parameters\";a:0:{}s:10:\"\0*\0actions\";a:1:{s:19:\"AJXP_REPO_SCOPE_ALL\";a:3:{s:9:\"access.fs\";a:1:{s:5:\"purge\";s:8:\"disabled\";}s:10:\"meta.watch\";a:1:{s:12:\"toggle_watch\";s:8:\"disabled\";}s:12:\"index.lucene\";a:1:{s:5:\"index\";s:8:\"disabled\";}}}s:14:\"\0*\0autoApplies\";a:1:{i:0;s:5:\"guest\";}}'),('MINISITE','O:9:\"AJXP_Role\":7:{s:12:\"\0*\0groupPath\";N;s:9:\"\0*\0roleId\";s:8:\"MINISITE\";s:12:\"\0*\0roleLabel\";s:14:\"Minisite Users\";s:7:\"\0*\0acls\";a:0:{}s:13:\"\0*\0parameters\";a:0:{}s:10:\"\0*\0actions\";a:1:{s:22:\"AJXP_REPO_SCOPE_SHARED\";a:9:{s:9:\"access.fs\";a:3:{s:9:\"ajxp_link\";b:0;s:5:\"chmod\";b:0;s:5:\"purge\";b:0;}s:10:\"meta.watch\";a:1:{s:12:\"toggle_watch\";b:0;}s:11:\"conf.serial\";a:1:{s:13:\"get_bookmarks\";b:0;}s:8:\"conf.sql\";a:1:{s:13:\"get_bookmarks\";b:0;}s:12:\"index.lucene\";a:1:{s:5:\"index\";b:0;}s:12:\"action.share\";a:1:{s:5:\"share\";b:0;}s:8:\"gui.ajax\";a:1:{s:8:\"bookmark\";b:0;}s:11:\"auth.serial\";a:1:{s:11:\"pass_change\";b:0;}s:8:\"auth.sql\";a:1:{s:11:\"pass_change\";b:0;}}}s:14:\"\0*\0autoApplies\";a:0:{}}'),('MINISITE_NODOWNLOAD','O:9:\"AJXP_Role\":7:{s:12:\"\0*\0groupPath\";N;s:9:\"\0*\0roleId\";s:19:\"MINISITE_NODOWNLOAD\";s:12:\"\0*\0roleLabel\";s:28:\"Minisite Users - No Download\";s:7:\"\0*\0acls\";a:0:{}s:13:\"\0*\0parameters\";a:0:{}s:10:\"\0*\0actions\";a:1:{s:22:\"AJXP_REPO_SCOPE_SHARED\";a:1:{s:9:\"access.fs\";a:4:{s:8:\"download\";b:0;s:14:\"download_chunk\";b:0;s:16:\"prepare_chunk_dl\";b:0;s:12:\"download_all\";b:0;}}}s:14:\"\0*\0autoApplies\";a:0:{}}'),('ROOT_ROLE','O:9:\"AJXP_Role\":7:{s:12:\"\0*\0groupPath\";N;s:9:\"\0*\0roleId\";s:9:\"ROOT_ROLE\";s:12:\"\0*\0roleLabel\";s:9:\"Root Role\";s:7:\"\0*\0acls\";a:2:{i:1;s:2:\"rw\";s:9:\"ajxp_user\";s:2:\"rw\";}s:13:\"\0*\0parameters\";a:1:{s:19:\"AJXP_REPO_SCOPE_ALL\";a:1:{s:9:\"core.conf\";a:2:{s:18:\"DEFAULT_REPOSITORY\";s:9:\"ajxp_user\";s:24:\"DEFAULT_START_REPOSITORY\";s:9:\"ajxp_user\";}}}s:10:\"\0*\0actions\";a:0:{}s:14:\"\0*\0autoApplies\";a:2:{i:0;s:8:\"standard\";i:1;s:5:\"admin\";}}');
 /*!40000 ALTER TABLE `ajxp_roles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -289,7 +295,6 @@ CREATE TABLE `ajxp_user_prefs` (
 
 LOCK TABLES `ajxp_user_prefs` WRITE;
 /*!40000 ALTER TABLE `ajxp_user_prefs` DISABLE KEYS */;
-INSERT INTO `ajxp_user_prefs` VALUES (1,'admin','AJXP_WEBDAV_DATA','$phpserial$a:1:{s:3:\"HA1\";s:32:\"caa7132ad30dd00188a11c86c9cea3c0\";}');
 /*!40000 ALTER TABLE `ajxp_user_prefs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -315,7 +320,6 @@ CREATE TABLE `ajxp_user_rights` (
 
 LOCK TABLES `ajxp_user_rights` WRITE;
 /*!40000 ALTER TABLE `ajxp_user_rights` DISABLE KEYS */;
-INSERT INTO `ajxp_user_rights` VALUES (3,'admin','ajxp.admin','1'),(4,'admin','ajxp.roles','$phpserial$a:2:{s:9:\"ROOT_ROLE\";b:1;s:15:\"AJXP_USR_/admin\";b:1;}');
 /*!40000 ALTER TABLE `ajxp_user_rights` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -365,7 +369,6 @@ CREATE TABLE `ajxp_users` (
 
 LOCK TABLES `ajxp_users` WRITE;
 /*!40000 ALTER TABLE `ajxp_users` DISABLE KEYS */;
-INSERT INTO `ajxp_users` VALUES ('admin','sha256:1000:C/D/peaeK6CjJlYzbNQWrN+4DCOPSDsz:2bchUvfOzB1q52zKERKwEb2C8LPhOdkc','/');										      
 /*!40000 ALTER TABLE `ajxp_users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

@@ -1,4 +1,4 @@
-* http_auth
-* user's home dirs
+* user's home dirs, in replacement of "My Files"
+* Put common files in /home/yunohost.app
 * specific php-fpm with output_buffering OFF, higher upload limit, ...
 * upgrade script
