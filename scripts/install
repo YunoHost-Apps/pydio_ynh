@@ -26,11 +26,11 @@ tar xzf ../upstream/pydio-core.tar.gz -C ../upstream
 # Copy files to the right place
 final_path=/var/www/pydio
 
+# Create owncloud user
+sudo useradd -d /var/www/pydio pydio
+
 sudo mkdir -p $final_path
 sudo cp -ar ../upstream/pydio-core-$version/* $final_path
-
-# Fix up permissions
-sudo chown -R www-data: $final_path
 
 # Database
 db_pwd=$(dd if=/dev/urandom bs=1 count=200 2> /dev/null | tr -c -d '[A-Za-z0-9]' | sed -n 's/\(.\{24\}\).*/\1/p')
@@ -46,13 +46,28 @@ sudo yunohost app setting pydio admin -v $admin
 
 sudo touch $final_path/data/cache/admin_counted
 sudo touch $final_path/data/cache/first_run_passed
-# TODO php-fpm output_buffering OFF
 sudo touch $final_path/data/cache/diag_result.php
 
-sudo find $final_path -name "*" -type f -exec chmod 644 {} \;
-sudo find $final_path -name "*" -type d -exec chmod 755 {} \;
+# Fix up permissions
+sudo chown -R root:pydio $final_path
+sudo find $final_path -type f -exec chmod 644 {} \;
+sudo find $final_path -type d -exec chmod 755 {} \;
+sudo find $final_path/data -type f -exec chmod 664 {} \;
+sudo find $final_path/data -type d -exec chmod 775 {} \;
+
+sed -i "s@NAMETOCHANGE@pydio@g" ../conf/php-fpm.conf
+finalphpconf=/etc/php5/fpm/pool.d/pydio.conf
+sudo cp ../conf/php-fpm.conf $finalphpconf
+sudo chown root: $finalphpconf
+sudo chmod 644 $finalphpconf
+
+finalphpini=/etc/php5/fpm/conf.d/20-pydio.ini
+sudo cp ../conf/php-fpm.ini $finalphpini
+sudo chown root: $finalphpini
+sudo chmod 644 $finalphpini
 
 # Nginx configuration
+sed -i "s@NAMETOCHANGE@pydio@g" ../conf/nginx.conf
 sed -i "s@PATHTOCHANGE@$path@g" ../conf/nginx.conf
 sed -i "s@ALIASTOCHANGE@$final_path@g" ../conf/nginx.conf
 sudo cp ../conf/nginx.conf /etc/nginx/conf.d/$domain.d/pydio.conf
@@ -60,5 +75,6 @@ sudo chown root: /etc/nginx/conf.d/$domain.d/pydio.conf
 sudo chmod 600 /etc/nginx/conf.d/$domain.d/pydio.conf
 
 # Reload Nginx and regenerate SSOwat conf
+sudo service php5-fpm restart
 sudo service nginx reload
 sudo yunohost app ssowatconf
