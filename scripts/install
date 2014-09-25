@@ -3,11 +3,19 @@
 # Retrieve arguments
 domain=$1
 path=$2
+admin=$3
 
 # Check domain/path availability
 sudo yunohost app checkurl $domain$path -a pydio
 if [[ ! $? -eq 0 ]]; then
 	exit 1
+fi
+
+# Check that admin user is an existing account
+sudo yunohost user list --json | grep -q "\"username\": \"$admin\""
+if [[ ! $? -eq 0 ]]; then
+    echo "Error : the chosen admin user does not exist"
+    exit 1
 fi
 
 mkdir ../upstream
@@ -31,8 +39,10 @@ sudo yunohost app initdb $db_user -p $db_pwd -s $(readlink -e ../conf/create.mys
 sudo yunohost app setting pydio mysqlpwd -v $db_pwd
 
 sed -i "s@YNH_MYSQL_PWD@$db_pwd@g" ../conf/bootstrap.json
+sed -i "s@YNH_ADMIN@$admin@g" ../conf/bootstrap.json
 sudo mkdir -p $final_path/data/plugins/boot.conf
 sudo cp ../conf/bootstrap.json $final_path/data/plugins/boot.conf/bootstrap.json
+sudo yunohost app setting pydio admin -v $admin
 
 sudo touch $final_path/data/cache/admin_counted
 sudo touch $final_path/data/cache/first_run_passed

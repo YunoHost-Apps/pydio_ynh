@@ -16,17 +16,27 @@
             {
                 "name": "domain",
                 "ask": {
-                    "en": "Choose a domain for Pydio"
+                    "en": "Choose a domain for Pydio",
+                    "fr": "Choisissez un domaine pour Pydio"
                 },
                 "example": "domain.org"
             },
             {
                 "name": "path",
                 "ask": {
-                    "en": "Choose a path for Pydio"
+                    "en": "Choose a path for Pydio",
+                    "fr": "Choisissez un chemin pour Pydio"
                 },
                 "example": "/pydio",
                 "default": "/pydio"
+            },
+            {
+                "name": "admin",
+                "ask": {
+                    "en": "Choose the Pydio admin user",
+                    "fr": "Choisissez l'administrateur Pydio"
+                },
+                "example": "johndoe"
             }
         ]
     }

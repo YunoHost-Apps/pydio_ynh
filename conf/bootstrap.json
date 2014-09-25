@@ -53,7 +53,7 @@
       "LDAP_DN":"ou=users,dc=yunohost,dc=org",
       "AUTO_APPLY_ROLE":"",
       "AUTOCREATE_AJXPUSER":true,
-      "AJXP_ADMIN_LOGIN":"test",
+      "AJXP_ADMIN_LOGIN":"YNH_ADMIN",
       "group_switch_value":"auth.ldap"
     },
     "MULTI_MODE":{
