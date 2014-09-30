@@ -25,12 +25,15 @@ tar xzf ../upstream/pydio-core.tar.gz -C ../upstream
 
 # Copy files to the right place
 final_path=/var/www/pydio
+data_path=/home/yunohost.app/pydio
 
 # Create owncloud user
 sudo useradd -d /var/www/pydio pydio
 
 sudo mkdir -p $final_path
 sudo cp -ar ../upstream/pydio-core-$version/* $final_path
+
+sudo mkdir -p $data_path
 
 # Database
 db_pwd=$(dd if=/dev/urandom bs=1 count=200 2> /dev/null | tr -c -d '[A-Za-z0-9]' | sed -n 's/\(.\{24\}\).*/\1/p')
@@ -44,16 +47,22 @@ sudo mkdir -p $final_path/data/plugins/boot.conf
 sudo cp ../conf/bootstrap.json $final_path/data/plugins/boot.conf/bootstrap.json
 sudo yunohost app setting pydio admin -v $admin
 
+sudo cp ../conf/bootstrap_context.php $final_path/conf
+
 sudo touch $final_path/data/cache/admin_counted
 sudo touch $final_path/data/cache/first_run_passed
 sudo touch $final_path/data/cache/diag_result.php
 
+sudo mv $final_path/data $data_path
+
 # Fix up permissions
-sudo chown -R root:pydio $final_path
+sudo chown -R root: $final_path
 sudo find $final_path -type f -exec chmod 644 {} \;
 sudo find $final_path -type d -exec chmod 755 {} \;
-sudo find $final_path/data -type f -exec chmod 664 {} \;
-sudo find $final_path/data -type d -exec chmod 775 {} \;
+
+sudo chown -R pydio:pydio $data_path
+sudo find $data_path/data -type f -exec chmod 660 {} \;
+sudo find $data_path/data -type d -exec chmod 770 {} \;
 
 sed -i "s@NAMETOCHANGE@pydio@g" ../conf/php-fpm.conf
 finalphpconf=/etc/php5/fpm/pool.d/pydio.conf

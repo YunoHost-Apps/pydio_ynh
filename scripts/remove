@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# Removing executable files
 sudo rm -rf /var/www/pydio
+sudo rm -rf /home/yunohost.app/pydio
+
 domain=$(sudo yunohost app setting pydio domain)
 sudo rm -f /etc/nginx/conf.d/$domain.d/pydio.conf
 sudo rm -f /etc/php5/fpm/pool.d/pydio.conf
@@ -15,6 +16,5 @@ mysql -u root -p$root_pwd -e "DROP DATABASE $db_name ; DROP USER $db_user@localh
 
 sudo userdel pydio > /dev/null 2>&1
 
-# Restarting services
 sudo service nginx reload
 sudo service php5-fpm restart

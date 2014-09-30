@@ -124,9 +124,9 @@ CREATE TABLE `ajxp_plugin_configs` (
 LOCK TABLES `ajxp_plugin_configs` WRITE;
 /*!40000 ALTER TABLE `ajxp_plugin_configs` DISABLE KEYS */;
 INSERT INTO `ajxp_plugin_configs` VALUES
-('authfront.http_basic', 'a:3:{s:19:"AJXP_PLUGIN_ENABLED";b:0;s:5:"ORDER";s:2:"10";s:13:"PROTOCOL_TYPE";s:10:"no_session";}'),
-('authfront.http_server', 'a:5:{s:19:"AJXP_PLUGIN_ENABLED";b:1;s:11:"CREATE_USER";b:0;s:10:"AJXP_ADMIN";s:4:"";s:5:"ORDER";s:1:"1";s:13:"PROTOCOL_TYPE";s:4:"both";}'),
-('authfront.session_login','a:3:{s:19:"AJXP_PLUGIN_ENABLED";b:0;s:5:"ORDER";s:2:"20";s:13:"PROTOCOL_TYPE";s:12:"session_only";}'),
+('authfront.http_basic', 'a:3:{s:19:\"AJXP_PLUGIN_ENABLED\";b:0;s:5:\"ORDER\";s:2:\"10\";s:13:\"PROTOCOL_TYPE\";s:10:\"no_session\";}'),
+('authfront.http_server', 'a:5:{s:19:\"AJXP_PLUGIN_ENABLED\";b:1;s:11:\"CREATE_USER\";b:0;s:10:\"AJXP_ADMIN\";s:0:\"\";s:5:\"ORDER\";s:1:\"1\";s:13:\"PROTOCOL_TYPE\";s:4:\"both\";}'),
+('authfront.session_login','a:3:{s:19:\"AJXP_PLUGIN_ENABLED\";b:0;s:5:\"ORDER\";s:2:\"20\";s:13:\"PROTOCOL_TYPE\";s:12:\"session_only\";}'),
 ('core.ajaxplorer','a:2:{s:17:\"APPLICATION_TITLE\";s:5:\"Pydio\";s:16:\"DEFAULT_LANGUAGE\";s:2:\"en\";}'),
 ('core.log','a:1:{s:22:\"UNIQUE_PLUGIN_INSTANCE\";a:3:{s:13:\"instance_name\";s:7:\"log.sql\";s:18:\"group_switch_value\";s:7:\"log.sql\";s:10:\"SQL_DRIVER\";a:2:{s:11:\"core_driver\";s:4:\"core\";s:18:\"group_switch_value\";s:4:\"core\";}}}'),
 ('core.mq','a:1:{s:18:\"UNIQUE_MS_INSTANCE\";a:3:{s:13:\"instance_name\";s:6:\"mq.sql\";s:18:\"group_switch_value\";s:6:\"mq.sql\";s:10:\"SQL_DRIVER\";a:2:{s:11:\"core_driver\";s:4:\"core\";s:18:\"group_switch_value\";s:4:\"core\";}}}'),
