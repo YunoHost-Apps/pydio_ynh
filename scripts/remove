@@ -14,6 +14,15 @@ db_name=pydio
 root_pwd=$(sudo cat /etc/yunohost/mysql)
 mysql -u root -p$root_pwd -e "DROP DATABASE $db_name ; DROP USER $db_user@localhost ;"
 
+for i in $(ls /home)
+do
+    sudo yunohost user list --json | grep -q "\"username\": \"$i\""
+    if [[ $? -eq 0 ]];
+    then
+        sudo setfacl -x g:pydio:rwx /home/$i
+    fi
+done
+
 sudo userdel pydio > /dev/null 2>&1
 
 sudo service nginx reload

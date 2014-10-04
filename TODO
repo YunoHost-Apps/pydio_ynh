@@ -1,4 +1,5 @@
 * user's home dirs, in replacement of "My Files"
-* Put common files in /home/yunohost.app
-* specific php-fpm with output_buffering OFF, higher upload limit, ...
 * upgrade script
+* perf improvements
+  * https://pyd.io/administrator/enriching-your-users-experience/tuning-server-performances-apc-powerfs-xsendfile/
+  * https://pyd.io/administrator/enriching-your-users-experience/websocket-server-activation/
