@@ -6,7 +6,6 @@ sudo rm -rf /home/yunohost.app/pydio
 domain=$(sudo yunohost app setting pydio domain)
 sudo rm -f /etc/nginx/conf.d/$domain.d/pydio.conf
 sudo rm -f /etc/php5/fpm/pool.d/pydio.conf
-sudo rm -f /etc/php5/fpm/conf.d/20-pydio.ini
 
 # Trash db
 db_user=pydio

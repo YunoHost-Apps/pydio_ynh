@@ -88,11 +88,6 @@ sudo cp ../conf/php-fpm.conf $finalphpconf
 sudo chown root: $finalphpconf
 sudo chmod 644 $finalphpconf
 
-#finalphpini=/etc/php5/fpm/conf.d/20-pydio.ini
-#sudo cp ../conf/php-fpm.ini $finalphpini
-#sudo chown root: $finalphpini
-#sudo chmod 644 $finalphpini
-
 # Nginx configuration
 sed -i "s@NAMETOCHANGE@pydio@g" ../conf/nginx.conf
 sed -i "s@PATHTOCHANGE@$path@g" ../conf/nginx.conf
