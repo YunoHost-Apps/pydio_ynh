@@ -23,14 +23,14 @@ sudo apt-get install acl -y -qq
 
 mkdir ../upstream
 version=$(cat version)
-wget -O ../upstream/pydio-core.tar.gz http://sourceforge.net/projects/ajaxplorer/files/pydio/dev-channel/$version/pydio-core-$version.tar.gz
+wget -O ../upstream/pydio-core.tar.gz http://sourceforge.net/projects/ajaxplorer/files/pydio/stable-channel/$version/pydio-core-$version.tar.gz
 tar xzf ../upstream/pydio-core.tar.gz -C ../upstream
 
 # Copy files to the right place
 final_path=/var/www/pydio
 data_path=/home/yunohost.app/pydio
 
-# Create owncloud user
+# Create pydio user
 sudo useradd -d /var/www/pydio pydio
 
 sudo mkdir -p $final_path
