@@ -124,6 +124,7 @@ CREATE TABLE `ajxp_plugin_configs` (
 LOCK TABLES `ajxp_plugin_configs` WRITE;
 /*!40000 ALTER TABLE `ajxp_plugin_configs` DISABLE KEYS */;
 INSERT INTO `ajxp_plugin_configs` VALUES
+('access.fs', 'a:11:{s:19:\"AJXP_PLUGIN_ENABLED\";b:1;s:15:\"PROBE_REAL_SIZE\";b:0;s:9:\"USE_POSIX\";b:1;s:13:\"USE_XSENDFILE\";b:0;s:18:\"USE_XACCELREDIRECT\";b:0;s:19:\"DEFAULT_METASOURCES\";s:59:\"metastore.serial,meta.syncable,meta.filehasher,index.lucene\";s:17:\"SHOW_HIDDEN_FILES\";b:0;s:12:\"HIDE_RECYCLE\";b:0;s:15:\"HIDE_EXTENSIONS\";s:3:\"ser\";s:12:\"HIDE_FOLDERS\";s:0:\"\";s:14:\"HIDE_FILENAMES\";s:0:\"\";}'),
 ('authfront.http_basic', 'a:3:{s:19:\"AJXP_PLUGIN_ENABLED\";b:0;s:5:\"ORDER\";s:2:\"10\";s:13:\"PROTOCOL_TYPE\";s:10:\"no_session\";}'),
 ('authfront.http_server', 'a:5:{s:19:\"AJXP_PLUGIN_ENABLED\";b:1;s:11:\"CREATE_USER\";b:0;s:10:\"AJXP_ADMIN\";s:0:\"\";s:5:\"ORDER\";s:1:\"1\";s:13:\"PROTOCOL_TYPE\";s:4:\"both\";}'),
 ('authfront.session_login','a:3:{s:19:\"AJXP_PLUGIN_ENABLED\";b:0;s:5:\"ORDER\";s:2:\"20\";s:13:\"PROTOCOL_TYPE\";s:12:\"session_only\";}'),
