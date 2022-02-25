@@ -1,42 +1,46 @@
 {
     "name": "Pydio",
     "id": "pydio",
+    "packaging_format": 1,
     "description": {
         "en": "File sharing platform",
         "fr": "Plateforme de partage de fichiers"
     },
-    "developer": {
+    "version": "3.0.4~ynh1",
+    "url": "https://pydio.com",
+    "upstream": {
+        "license": "AGPL-3.0-or-later",
+        "website": "https://pydio.com",
+        "admindoc": "https://pydio.com/en/docs/",
+        "code": "https://github.com/pydio/cells"
+    },
+    "license": "AGPL-3.0-or-later",
+    "maintainer": {
         "name": "julienmalik",
         "email": "julien.malik@paraiso.me",
         "url": "https://github.com/julienmalik"
     },
+    "requirements": {
+        "yunohost": ">= 4.3.0"
+    },
     "multi_instance": "false",
+    "services": [
+        "nginx",
+        "mysql"
+    ],
     "arguments": {
-        "install" : [
+        "install": [
             {
                 "name": "domain",
-                "ask": {
-                    "en": "Choose a domain for Pydio",
-                    "fr": "Choisissez un domaine pour Pydio"
-                },
-                "example": "domain.org"
-            },
-            {
-                "name": "path",
-                "ask": {
-                    "en": "Choose a path for Pydio",
-                    "fr": "Choisissez un chemin pour Pydio"
-                },
-                "example": "/pydio",
-                "default": "/pydio"
+                "type": "domain"
             },
             {
                 "name": "admin",
-                "ask": {
-                    "en": "Choose the Pydio admin user",
-                    "fr": "Choisissez l'administrateur Pydio"
-                },
-                "example": "johndoe"
+                "type": "user"
+            },
+            {
+                "name": "password",
+                "type": "password"
             }
         ]
     }
