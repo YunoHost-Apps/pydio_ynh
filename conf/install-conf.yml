@@ -1,0 +1,22 @@
+# Basic no-TLS config for the embedded gateway
+proxyconfig:
+  binds:
+    - localhost:__PORT__
+  reverseproxyurl: https://__DOMAIN__
+  tlsconfig:
+      selfsigned:
+          hostnames:
+              - localhost
+
+frontendlogin: __ADMIN__
+frontendpassword: __PASSWORD__
+
+# DB connection
+dbconnectiontype: tcp
+dbtcphostname: localhost
+dbtcpport: 3306
+dbtcpname: __DB_NAME__
+dbtcpuser: __DB_USER__
+dbtcppassword: __DB_PWD__
+
+dsfolder: __DATADIR__

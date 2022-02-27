@@ -1,102 +1,186 @@
 #!/bin/bash
 
-# Retrieve arguments
-domain=$1
-path=$2
-admin=$3
+#=================================================
+# GENERIC START
+#=================================================
+# IMPORT GENERIC HELPERS
+#=================================================
 
-# Check domain/path availability
-sudo yunohost app checkurl $domain$path -a pydio
-if [[ ! $? -eq 0 ]]; then
-	exit 1
-fi
+source _common.sh
+source /usr/share/yunohost/helpers
 
-# Check that admin user is an existing account
-sudo yunohost user list --json | grep -q "\"username\": \"$admin\""
-if [[ ! $? -eq 0 ]]; then
-    echo "Error : the chosen admin user does not exist"
-    exit 1
-fi
+#=================================================
+# MANAGE SCRIPT FAILURE
+#=================================================
 
-# Install dependencies
-sudo apt-get install acl -y -qq
+ynh_clean_setup () {
+	ynh_clean_check_starting
+}
+# Exit if an error occurs during the execution of the script
+ynh_abort_if_errors
 
-mkdir ../upstream
-version=$(cat version)
-wget -O ../upstream/pydio-core.tar.gz http://sourceforge.net/projects/ajaxplorer/files/pydio/stable-channel/$version/pydio-core-$version.tar.gz
-tar xzf ../upstream/pydio-core.tar.gz -C ../upstream
+#=================================================
+# RETRIEVE ARGUMENTS FROM THE MANIFEST
+#=================================================
 
-# Copy files to the right place
-final_path=/var/www/pydio
-data_path=/home/yunohost.app/pydio
+domain=$YNH_APP_ARG_DOMAIN
+path_url="/"
+admin=$YNH_APP_ARG_ADMIN
+password=$YNH_APP_ARG_PASSWORD
 
-# Create pydio user
-sudo useradd -d /var/www/pydio pydio
+app=$YNH_APP_INSTANCE_NAME
 
-sudo mkdir -p $final_path
-sudo cp -ar ../upstream/pydio-core-$version/* $final_path
+#=================================================
+# CHECK IF THE APP CAN BE INSTALLED WITH THESE ARGS
+#=================================================
+ynh_script_progression --message="Validating installation parameters..."
 
-sudo mkdir -p $data_path
-sudo mv $final_path/data $data_path
+final_path=/var/www/$app
+test ! -e "$final_path" || ynh_die --message="This path already contains a folder"
 
-# Database
-db_pwd=$(dd if=/dev/urandom bs=1 count=200 2> /dev/null | tr -c -d '[A-Za-z0-9]' | sed -n 's/\(.\{24\}\).*/\1/p')
-db_user=pydio
-sudo yunohost app initdb $db_user -p $db_pwd -s $(readlink -e ../conf/create.mysql)
-sudo yunohost app setting pydio mysqlpwd -v $db_pwd
+# Register (book) web path
+ynh_webpath_register --app=$app --domain=$domain --path_url=$path_url
 
-sudo cp ../conf/bootstrap_context.php $final_path/conf
-sudo cp ../conf/bootstrap_repositories.php $final_path/conf
+#=================================================
+# STORE SETTINGS FROM MANIFEST
+#=================================================
+ynh_script_progression --message="Storing installation settings..."
 
-sed -i "s@YNH_MYSQL_PWD@$db_pwd@g" ../conf/bootstrap.json
-sed -i "s@YNH_ADMIN@$admin@g" ../conf/bootstrap.json
-sudo mkdir -p $data_path/data/plugins/boot.conf
-sudo cp ../conf/bootstrap.json $data_path/data/plugins/boot.conf/bootstrap.json
-sudo yunohost app setting pydio admin -v $admin
+ynh_app_setting_set --app=$app --key=domain --value=$domain
+ynh_app_setting_set --app=$app --key=path --value=$path_url
+ynh_app_setting_set --app=$app --key=admin --value=$admin
 
-sudo touch $data_path/data/cache/admin_counted
-sudo touch $data_path/data/cache/first_run_passed
-sudo touch $data_path/data/cache/diag_result.php
+#=================================================
+# STANDARD MODIFICATIONS
+#=================================================
+# FIND AND OPEN A PORT
+#=================================================
+ynh_script_progression --message="Finding an available port..."
 
-# let's rename the "Common Files" repository mount to common_files
-# also, "files" mount is useless now since we map to /home/AJXP_USER directly
-sudo mkdir -p $data_path/data/common_files
-sudo rm -rf $data_path/data/{files,personal}
+# Find an available port
+port=$(ynh_find_port --port=8080)
+ynh_app_setting_set --app=$app --key=port --value=$port
 
-# Fix up permissions
-sudo chown -R root: $final_path
-sudo find $final_path -type f -exec chmod 644 {} \;
-sudo find $final_path -type d -exec chmod 755 {} \;
+# Optional: Expose this port publicly
+# (N.B.: you only need to do this if the app actually needs to expose the port publicly.
+# If you do this and the app doesn't actually need you are CREATING SECURITY HOLES IN THE SERVER !)
 
-sudo chown -R pydio:pydio $data_path
-sudo find $data_path/data -type f -exec chmod 660 {} \;
-sudo find $data_path/data -type d -exec chmod 770 {} \;
+# Open the port
+# ynh_script_progression --message="Configuring firewall..."
+# ynh_exec_warn_less yunohost firewall allow --no-upnp TCP $port
 
-# Allow pydio to access user's home
-for i in $(ls /home)
-do
-    sudo yunohost user list --json | grep -q "\"username\": \"$i\""
-    if [[ $? -eq 0 ]];
-    then
-        sudo setfacl -m g:pydio:rwx /home/$i
-    fi
-done
+#=================================================
+# CREATE DEDICATED USER
+#=================================================
+ynh_script_progression --message="Configuring system user..."
 
-sed -i "s@NAMETOCHANGE@pydio@g" ../conf/php-fpm.conf
-finalphpconf=/etc/php5/fpm/pool.d/pydio.conf
-sudo cp ../conf/php-fpm.conf $finalphpconf
-sudo chown root: $finalphpconf
-sudo chmod 644 $finalphpconf
+# Create a system user
+ynh_system_user_create --username=$app --home_dir="$final_path"
 
-# Nginx configuration
-sed -i "s@NAMETOCHANGE@pydio@g" ../conf/nginx.conf
-sed -i "s@PATHTOCHANGE@$path@g" ../conf/nginx.conf
-sed -i "s@ALIASTOCHANGE@$final_path@g" ../conf/nginx.conf
-sudo cp ../conf/nginx.conf /etc/nginx/conf.d/$domain.d/pydio.conf
-sudo chown root: /etc/nginx/conf.d/$domain.d/pydio.conf
-sudo chmod 600 /etc/nginx/conf.d/$domain.d/pydio.conf
+#=================================================
+# CREATE A MYSQL DATABASE
+#=================================================
+ynh_script_progression --message="Creating a MySQL database..."
 
-# Reload Nginx and regenerate SSOwat conf
-sudo service php5-fpm restart
-sudo service nginx reload
-sudo yunohost app ssowatconf
+db_name=$(ynh_sanitize_dbid --db_name=$app)
+db_user=$db_name
+ynh_app_setting_set --app=$app --key=db_name --value=$db_name
+ynh_mysql_setup_db --db_user=$db_user --db_name=$db_name
+
+#=================================================
+# DOWNLOAD, CHECK AND UNPACK SOURCE
+#=================================================
+ynh_script_progression --message="Setting up source files..."
+
+ynh_app_setting_set --app=$app --key=final_path --value=$final_path
+# Download, check integrity, uncompress and patch the source from app.src
+ynh_setup_source --dest_dir="$final_path"
+
+chmod 750 "$final_path"
+chmod -R o-rwx "$final_path"
+chown -R $app:www-data "$final_path"
+
+#=================================================
+# NGINX CONFIGURATION
+#=================================================
+ynh_script_progression --message="Configuring NGINX web server..."
+
+# Create a dedicated NGINX config
+ynh_add_nginx_config
+
+#=================================================
+# SPECIFIC SETUP
+#=================================================
+# CREATE DATA DIRECTORY
+#=================================================
+ynh_script_progression --message="Creating a data directory..."
+
+datadir=/home/yunohost.app/$app
+ynh_app_setting_set --app=$app --key=datadir --value=$datadir
+
+mkdir -p $datadir
+
+chmod 750 "$datadir"
+chmod -R o-rwx "$datadir"
+chown -R $app:www-data "$datadir"
+
+#=================================================
+# ADD A CONFIGURATION
+#=================================================
+ynh_script_progression --message="Adding a configuration file..."
+
+ynh_add_config --template="../conf/install-conf.yml" --destination="$final_path/install-conf.yml"
+ynh_delete_file_checksum --file="$final_path/install-conf.yml"
+
+pushd "$final_path"
+	ynh_exec_as $app ./cells configure --cli --yaml "$final_path/install-conf.yml"
+popd
+
+ynh_secure_remove --file="$final_path/install-conf.yml"
+
+#=================================================
+# SETUP SYSTEMD
+#=================================================
+ynh_script_progression --message="Configuring a systemd service..."
+
+# Create a dedicated systemd config
+ynh_add_systemd_config
+
+#=================================================
+# GENERIC FINALIZATION
+#=================================================
+# INTEGRATE SERVICE IN YUNOHOST
+#=================================================
+ynh_script_progression --message="Integrating service in YunoHost..."
+
+yunohost service add $app
+
+#=================================================
+# START SYSTEMD SERVICE
+#=================================================
+ynh_script_progression --message="Starting a systemd service..."
+
+# Start a systemd service
+ynh_systemd_action --service_name=$app --action="start" --log_path="systemd" --line_match="Restart done"
+
+#=================================================
+# SETUP SSOWAT
+#=================================================
+ynh_script_progression --message="Configuring permissions..."
+
+# Everyone can access the app.
+# The "main" permission is automatically created before the install script.
+ynh_permission_update --permission="main" --add="visitors"
+
+#=================================================
+# RELOAD NGINX
+#=================================================
+ynh_script_progression --message="Reloading NGINX web server..."
+
+ynh_systemd_action --service_name=nginx --action=reload
+
+#=================================================
+# END OF SCRIPT
+#=================================================
+
+ynh_script_progression --message="Installation of $app completed"
