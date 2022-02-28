@@ -1,4 +1,0 @@
-#!/bin/bash
-
-user=$1
-sudo setfacl -m g:pydio:rwx /home/$user
