@@ -67,9 +67,8 @@ ram.runtime = "50M"
 
     [resources.install_dir]
 
-    # [resources.data_dir]
-    # This will create/remove the data dir as /home/yunohost.app/$app
-    # and store the corresponding setting $data_dir
+    [resources.data_dir]
+    group = "www-data:rwx"
 
     [resources.permissions]
     main.url = "/"

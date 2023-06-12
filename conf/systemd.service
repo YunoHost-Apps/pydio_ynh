@@ -25,7 +25,7 @@ SuccessExitStatus=0
 # Add environment variables
 Environment=CELLS_ENABLE_METRICS=false
 # Environment=CELLS_WORKING_DIR=__INSTALL_DIR__
-# Environment=CELLS_DATA_DIR=__DATADIR__
+# Environment=CELLS_DATA_DIR=__DATA_DIR__
 
 [Install]
 WantedBy=multi-user.target
