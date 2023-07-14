@@ -6,7 +6,7 @@
         "en": "File sharing platform",
         "fr": "Plateforme de partage de fichiers"
     },
-    "version": "3.0.4~ynh1",
+    "version": "4.2.4~ynh1",
     "url": "https://pydio.com",
     "upstream": {
         "license": "AGPL-3.0-or-later",
@@ -21,7 +21,7 @@
         "url": "https://github.com/julienmalik"
     },
     "requirements": {
-        "yunohost": ">= 4.3.0"
+        "yunohost": ">= 11.1.21"
     },
     "multi_instance": true,
     "services": [

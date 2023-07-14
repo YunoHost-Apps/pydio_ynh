@@ -1,5 +1,5 @@
-SOURCE_URL=https://download.pydio.com/pub/cells/release/3.0.4/linux-amd64/pydio-cells-3.0.4-linux-amd64.zip
-SOURCE_SUM=97e6bb779fed596b6fe11ed2aff8db0789d2f2f2b8bf8cd11e240dc3b76bf4b2
+SOURCE_URL=https://download.pydio.com/pub/cells/release/4.2.4/linux-amd64/pydio-cells-4.2.4-linux-amd64.zip
+SOURCE_SUM=153a8350870ca8e221c09d96c300ed254f3af674e74f92f0eeb73c3d54c3ffdc
 SOURCE_SUM_PRG=sha256sum
 SOURCE_FORMAT=zip
 SOURCE_IN_SUBDIR=false
