@@ -18,7 +18,7 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 
 File sharing platform
 
-**Shipped version:** 3.0.4~ynh1
+**Shipped version:** 4.2.4~ynh1
 
 ## Screenshots
 
