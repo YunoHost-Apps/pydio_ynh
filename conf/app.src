@@ -2,5 +2,5 @@ SOURCE_URL=https://download.pydio.com/pub/cells/release/3.0.9/linux-amd64/cells
 SOURCE_SUM=4272ca1e10f2ca08d08d7d08d440d4b6e3d09ba37235f54bdbac1ac7c29b2aaa
 SOURCE_SUM_PRG=sha256sum
 SOURCE_IN_SUBDIR=false
-SOURCE_FILENAME=
+SOURCE_FILENAME=cells
 SOURCE_EXTRACT=false
