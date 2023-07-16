@@ -42,9 +42,10 @@ yunohost service add "$app" --description="Pydio - A file sharing platform" --lo
 #=================================================
 # ADD A CONFIGURATION
 #=================================================
-#ynh_script_progression --message="Configuring Pydio..." --weight=1
+ynh_script_progression --message="Configuring Pydio..." --weight=1
 
 #ynh_add_config --template="install-conf.yml" --destination="$install_dir/install-conf.yml"
+ynh_add_config --template="../conf/pydio.yml" --destination="$install_dir/pydio.json"
 
 #pushd "$install_dir"
 #	ynh_exec_as "$app" ./cells configure --cli --yaml "$install_dir/install-conf.yml"
@@ -52,6 +53,9 @@ yunohost service add "$app" --description="Pydio - A file sharing platform" --lo
 
 #ynh_secure_remove --file="$install_dir/install-conf.yml"
 #ynh_delete_file_checksum --file="$install_dir/install-conf.yml"
+
+chmod 660 "$install_dir/pydio.json"
+chown $app: "$install_dir/pydio.json"
 
 #=================================================
 # GENERIC FINALIZATION
