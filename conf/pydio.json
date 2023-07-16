@@ -1,9 +1,0 @@
-{
-    "ProxyConfig": {
-        "Binds": ["127.0.0.1:__PORT__"],
-        "ReverseProxyURL": "https://__DOMAIN__",
-        "RedirectURLs": [
-            "http://__DOMAIN__"
-        ]
-    }
-}

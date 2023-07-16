@@ -66,6 +66,8 @@ ram.runtime = "50M"
     main.url = "/"
 
     [resources.ports]
+    main.default = 8080
+    main.exposed = "TCP"
 
     [resources.apt]
     packages = "mariadb-server"
