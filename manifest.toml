@@ -10,18 +10,15 @@ version = "4.2.1~ynh1"
 maintainers = ["salamandar"]
 
 [upstream]
-# NB: Only the "license" key is mandatory. Remove entries for which there's no relevant data
 license = "AGPL-3.0"
 website = "https://pydio.com"
-# demo = "https://demo.example.com"
 admindoc = "https://pydio.com/en/docs"
-# userdoc = "https://yunohost.org/apps"
 code = "https://github.com/pydio/cells"
 cpe = "cpe:2.3:a:pydio:cells"
 fund = "https://pydio.com/en/pricing"
 
 [integration]
-yunohost = ">= 11.1.14"
+yunohost = ">= 11.1.21"
 architectures = ["amd64", "armhf", "arm64"]
 multi_instance = true
 ldap = false
@@ -35,8 +32,6 @@ ram.runtime = "50M"
     type = "domain"
 
     [install.init_main_permission]
-    # this is a generic question - ask strings are automatically handled by YunoHost's core
-    # This won't be saved as setting and will instead be used to initialize the SSOwat permission
     type = "group"
     default = "visitors"
 
@@ -47,9 +42,6 @@ ram.runtime = "50M"
     type = "password"
 
 [resources]
-    # See the packaging documentation for the full set
-    # of explanation regarding the behavior and properties for each of those
-
     [resources.sources]
 
         [resources.sources.main]

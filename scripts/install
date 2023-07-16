@@ -19,6 +19,7 @@ ynh_script_progression --message="Setting up source files..." --weight=1
 ynh_setup_source --dest_dir="$install_dir"
 
 chown -R "$app:www-data" "$install_dir"
+chmod +x "$install_dir/cells"
 
 #=================================================
 # SYSTEM CONFIGURATION
@@ -45,9 +46,9 @@ ynh_script_progression --message="Configuring Pydio..." --weight=1
 
 ynh_add_config --template="install-conf.yml" --destination="$install_dir/install-conf.yml"
 
-pushd "$install_dir" || ynh_die
+pushd "$install_dir"
 	ynh_exec_as "$app" ./cells configure --cli --yaml "$install_dir/install-conf.yml"
-popd || ynh_die
+popd
 
 ynh_secure_remove --file="$install_dir/install-conf.yml"
 ynh_delete_file_checksum --file="$install_dir/install-conf.yml"
