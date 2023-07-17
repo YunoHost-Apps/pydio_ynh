@@ -12,7 +12,7 @@ WorkingDirectory=__INSTALL_DIR__/
 PermissionsStartOnly=true
 
 AmbientCapabilities=CAP_NET_BIND_SERVICE
-ExecStart=__INSTALL_DIR__/cells start
+ExecStart=__INSTALL_DIR__/cells start --grpc_discovery_port __PORT_DISCOVERY_GRPC__ --grpc_port __PORT_GRPC__
 Restart=on-failure
 StandardOutput=journal
 StandardError=inherit
@@ -24,8 +24,8 @@ SuccessExitStatus=0
 
 # Add environment variables
 Environment=CELLS_ENABLE_METRICS=false
-# Environment=CELLS_WORKING_DIR=__INSTALL_DIR__
-# Environment=CELLS_DATA_DIR=__DATA_DIR__
+Environment=CELLS_WORKING_DIR=__INSTALL_DIR__
+Environment=CELLS_DATA_DIR=__DATA_DIR__
 
 [Install]
 WantedBy=multi-user.target
