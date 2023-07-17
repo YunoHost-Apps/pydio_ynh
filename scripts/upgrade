@@ -27,7 +27,6 @@ datadir=$(ynh_app_setting_get --app=$app --key=datadir)
 #=================================================
 # CHECK VERSION
 #=================================================
-ynh_script_progression --message="Checking version..."
 
 upgrade_type=$(ynh_check_app_version_changed)
 
@@ -90,6 +89,7 @@ fi
 chmod 750 "$final_path"
 chmod -R o-rwx "$final_path"
 chown -R $app:www-data "$final_path"
+chmod +x "$final_path/cells"
 
 #=================================================
 # NGINX CONFIGURATION
