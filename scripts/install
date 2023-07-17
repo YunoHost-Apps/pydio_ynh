@@ -128,16 +128,16 @@ chown -R $app:www-data "$datadir"
 #=================================================
 # ADD A CONFIGURATION
 #=================================================
-ynh_script_progression --message="Adding a configuration file..."
+#ynh_script_progression --message="Adding a configuration file..."
 
-ynh_add_config --template="../conf/install-conf.yml" --destination="$final_path/install-conf.yml"
-ynh_delete_file_checksum --file="$final_path/install-conf.yml"
+#ynh_add_config --template="../conf/install-conf.yml" --destination="$final_path/install-conf.yml"
+#ynh_delete_file_checksum --file="$final_path/install-conf.yml"
 
-pushd "$final_path"
-	ynh_exec_as $app ./cells configure --cli --yaml "$final_path/install-conf.yml"
-popd
+#pushd "$final_path"
+#	ynh_exec_as $app ./cells configure --cli --yaml "$final_path/install-conf.yml"
+#popd
 
-ynh_secure_remove --file="$final_path/install-conf.yml"
+#ynh_secure_remove --file="$final_path/install-conf.yml"
 
 #=================================================
 # SETUP SYSTEMD
