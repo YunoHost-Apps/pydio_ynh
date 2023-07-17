@@ -19,7 +19,6 @@ Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) po
 Favorisez la collaboration entre les équipes sans mettre vos données en danger.
 Pydio Cells est un logiciel de partage de documents opencore, auto-hébergé, avec la sécurité pour ADN.
 
-Plateforme de partage de fichiers
 
 **Version incluse :** 4.2.1~ynh1
 
