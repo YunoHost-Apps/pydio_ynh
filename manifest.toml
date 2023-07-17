@@ -1,0 +1,82 @@
+packaging_format = 2
+
+id = "pydio"
+name = "Pydio"
+description.en = "A file sharing platform"
+description.fr = "Une plateforme de partage de fichiers"
+
+version = "4.2.1~ynh1"
+
+maintainers = ["salamandar"]
+
+[upstream]
+# NB: Only the "license" key is mandatory. Remove entries for which there's no relevant data
+license = "AGPL-3.0"
+website = "https://pydio.com"
+# demo = "https://demo.example.com"
+admindoc = "https://pydio.com/en/docs"
+# userdoc = "https://yunohost.org/apps"
+code = "https://github.com/pydio/cells"
+cpe = "cpe:2.3:a:pydio:cells"
+fund = "https://pydio.com/en/pricing"
+
+[integration]
+yunohost = ">= 11.1.14"
+architectures = ["amd64", "armhf", "arm64"]
+multi_instance = true
+ldap = false
+sso = false
+disk = "50M"
+ram.build = "50M"
+ram.runtime = "50M"
+
+[install]
+    [install.domain]
+    type = "domain"
+
+    [install.init_main_permission]
+    # this is a generic question - ask strings are automatically handled by YunoHost's core
+    # This won't be saved as setting and will instead be used to initialize the SSOwat permission
+    type = "group"
+    default = "visitors"
+
+    [install.admin]
+    type = "user"
+
+    [install.password]
+    type = "password"
+
+[resources]
+    # See the packaging documentation for the full set
+    # of explanation regarding the behavior and properties for each of those
+
+    [resources.sources]
+
+        [resources.sources.main]
+        in_subdir = false
+        amd64.url = "https://download.pydio.com/pub/cells/release/4.2.1/linux-amd64/pydio-cells-4.2.1-linux-amd64.zip"
+        amd64.sha256 = "76caea1aca6c408fb43be49dc5e2193ccf5db9add449476a188bc725c5989849"
+
+        armhf.url = "https://download.pydio.com/pub/cells/release/4.2.1/linux-arm/pydio-cells-4.2.1-linux-arm.zip"
+        armhf.sha256 = "153ffd514911a164dad82e23007b2db2ebcc2c6d55d7727675e2312186eb6123"
+
+        arm64.url = "https://download.pydio.com/pub/cells/release/4.2.1/linux-arm64/pydio-cells-4.2.1-linux-arm64.zip"
+        arm64.sha256 = "0f348ff4e48db5c9231873c75bc6493c66ba790876ec7acf0b71d64a9bbb2f4a"
+
+    [resources.system_user]
+
+    [resources.install_dir]
+
+    [resources.data_dir]
+    group = "www-data:rwx"
+
+    [resources.permissions]
+    main.url = "/"
+
+    [resources.ports]
+
+    [resources.apt]
+    packages = "mariadb-server"
+
+    [resources.database]
+    type = "mysql"
