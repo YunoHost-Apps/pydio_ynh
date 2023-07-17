@@ -20,6 +20,7 @@ File sharing platform
 
 **Shipped version:** 3.0.9~ynh1
 
+
 ## Screenshots
 
 ![Screenshot of Pydio](./doc/screenshots/screenshot01.png)

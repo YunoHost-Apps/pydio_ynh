@@ -18,7 +18,9 @@ Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) po
 
 Plateforme de partage de fichiers
 
+
 **Version incluse :** 3.0.9~ynh1
+
 
 ## Captures d’écran
 
