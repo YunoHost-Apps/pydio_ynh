@@ -30,7 +30,6 @@ Cells V4 now provides secure, cloud-native, scalable, self-hosted, open-core doc
 * Official app website: <https://pydio.com>
 * Official admin documentation: <https://pydio.com/en/docs>
 * Upstream app code repository: <https://github.com/pydio/cells>
-* YunoHost documentation for this app: <https://yunohost.org/app_pydio>
 * Report a bug: <https://github.com/YunoHost-Apps/pydio_ynh/issues>
 
 ## Developer info
