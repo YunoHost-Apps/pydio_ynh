@@ -18,7 +18,7 @@ cpe = "cpe:2.3:a:pydio:cells"
 fund = "https://pydio.com/en/pricing"
 
 [integration]
-yunohost = ">= 11.1.21"
+yunohost = ">= 11.2"
 architectures = ["amd64", "armhf", "arm64"]
 multi_instance = true
 ldap = false

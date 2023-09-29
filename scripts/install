@@ -29,25 +29,20 @@ ynh_add_nginx_config
 
 ynh_add_systemd_config
 
-yunohost service add "$app" --description="Pydio - A file sharing platform" --log="/var/log/$app/$app.log"
-
-# ynh_use_logrotate
-
-# Create a dedicated Fail2Ban config
-# ynh_add_fail2ban_config --logpath="/var/log/nginx/${domain}-error.log" --failregex="Regex to match into the log for a failed login"
+yunohost service add "$app" --description="File sharing platform" --log="/var/log/$app/$app.log"
 
 #=================================================
 # APP INITIAL CONFIGURATION
 #=================================================
 # ADD A CONFIGURATION
 #=================================================
-ynh_script_progression --message="Configuring Pydio..." --weight=1
+ynh_script_progression --message="Configuring $app..." --weight=1
 
 ynh_add_config --template="install-conf.yml" --destination="$install_dir/install-conf.yml"
 
-pushd "$install_dir" || ynh_die
+pushd "$install_dir"
 	ynh_exec_as "$app" ./cells configure --cli --yaml "$install_dir/install-conf.yml"
-popd || ynh_die
+popd
 
 ynh_secure_remove --file="$install_dir/install-conf.yml"
 ynh_delete_file_checksum --file="$install_dir/install-conf.yml"
@@ -59,7 +54,7 @@ ynh_delete_file_checksum --file="$install_dir/install-conf.yml"
 #=================================================
 ynh_script_progression --message="Starting a systemd service..." --weight=1
 
-ynh_systemd_action --service_name="$app" --action="start" --log_path="/var/log/$app/$app.log"
+ynh_systemd_action --service_name="$app" --action="start" --log_path="systemd"
 
 #=================================================
 # END OF SCRIPT
