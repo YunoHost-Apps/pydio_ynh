@@ -29,7 +29,7 @@ Plateforme de partage de fichiers
 * Site officiel de l’app : <https://pydio.com>
 * Documentation officielle de l’admin : <https://pydio.com/en/docs/>
 * Dépôt de code officiel de l’app : <https://github.com/pydio/cells>
-* Documentation YunoHost pour cette app : <https://yunohost.org/app_pydio>
+* YunoHost Store: <https://apps.yunohost.org/app/pydio>
 * Signaler un bug : <https://github.com/YunoHost-Apps/pydio_ynh/issues>
 
 ## Informations pour les développeurs
