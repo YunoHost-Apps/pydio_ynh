@@ -31,6 +31,7 @@ Pydio Cells est un logiciel de partage de documents opencore, auto-hébergé, av
 * Site officiel de l’app : <https://pydio.com>
 * Documentation officielle de l’admin : <https://pydio.com/en/docs>
 * Dépôt de code officiel de l’app : <https://github.com/pydio/cells>
+* YunoHost Store: <https://apps.yunohost.org/app/pydio>
 * Signaler un bug : <https://github.com/YunoHost-Apps/pydio_ynh/issues>
 
 ## Informations pour les développeurs
