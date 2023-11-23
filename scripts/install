@@ -38,14 +38,14 @@ yunohost service add "$app" --description="File sharing platform" --log="/var/lo
 #=================================================
 ynh_script_progression --message="Configuring $app..." --weight=1
 
-ynh_add_config --template="install-conf.yaml" --destination="$install_dir/install-conf.yaml"
+ynh_add_config --template="install-conf.yml" --destination="$install_dir/install-conf.yml"
 
 pushd "$install_dir"
-	ynh_exec_as "$app" ./cells configure --cli --yaml "$install_dir/install-conf.yaml"
+	ynh_exec_as "$app" ./cells configure --cli --yaml "$install_dir/install-conf.yml"
 popd
 
-ynh_secure_remove --file="$install_dir/install-conf.yaml"
-ynh_delete_file_checksum --file="$install_dir/install-conf.yaml"
+ynh_secure_remove --file="$install_dir/install-conf.yml"
+ynh_delete_file_checksum --file="$install_dir/install-conf.yml"
 
 #=================================================
 # GENERIC FINALIZATION
