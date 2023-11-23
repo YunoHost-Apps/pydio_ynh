@@ -42,7 +42,7 @@ ynh_script_progression --message="Configuring $app..." --weight=1
 ynh_add_config --template="install-conf.yml" --destination="$install_dir/install-conf.yml"
 
 pushd "$install_dir"
-	ynh_exec_as "$app" ./cells configure --cli --yaml "$install_dir/install-conf.yml"
+	ynh_exec_as $app ./cells configure --cli --yaml "$install_dir/install-conf.yml"
 popd
 
 ynh_secure_remove --file="$install_dir/install-conf.yml"
