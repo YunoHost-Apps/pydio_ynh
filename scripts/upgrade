@@ -32,6 +32,7 @@ if [ "$upgrade_type" == "UPGRADE_APP" ]; then
 fi
 
 chown -R "$app:www-data" "$install_dir"
+chmod +x "install_dir/cells"
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
