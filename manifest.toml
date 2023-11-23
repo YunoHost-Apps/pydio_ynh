@@ -50,14 +50,14 @@ ram.runtime = "50M"
 
         [resources.sources.main]
         in_subdir = false
-        amd64.url = "https://download.pydio.com/pub/cells/release/4.2.5/linux-amd64/pydio-cells-4.2.5-linux-amd64.zip"
-        amd64.sha256 = "75467de7b763ed163f3b1956a9b32bcaece52a056979763dcfe315bd2c7273db"
+        amd64.url = "https://download.pydio.com/pub/cells/release/4.3.1/linux-amd64/pydio-cells-4.3.1-linux-amd64.zip"
+        amd64.sha256 = "966337451cf007ff9294f15db830cda128162604bb44ccd91510fae292c790ee"
 
-        armhf.url = "https://download.pydio.com/pub/cells/release/4.2.5/linux-arm/pydio-cells-4.2.5-linux-arm.zip"
-        armhf.sha256 = "b81ea76619b3d6593147014094e80fa5d659b64cc197d826236daea5d8da7baa"
+        armhf.url = "https://download.pydio.com/pub/cells/release/4.3.1/linux-arm/pydio-cells-4.3.1-linux-arm.zip"
+        armhf.sha256 = "af200d58f3efd917bf8add2a0e8bfb3bc832780cca470070530afa6bb1caefd0"
 
-        arm64.url = "https://download.pydio.com/pub/cells/release/4.2.5/linux-arm64/pydio-cells-4.2.5-linux-arm64.zip"
-        arm64.sha256 = "068d3d7a32f3d9fd87f6ccede4b4721b9e4530234269f9a638fc630da17150ba"
+        arm64.url = "https://download.pydio.com/pub/cells/release/4.3.1/linux-arm64/pydio-cells-4.3.1-linux-arm64.zip"
+        arm64.sha256 = "840d9a85e15892b52dd549152bef240015584b82feace9137e8b5b1660e80c43"
 
     [resources.system_user]
 
