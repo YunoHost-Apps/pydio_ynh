@@ -46,7 +46,7 @@ ynh_add_nginx_config
 
 # Create a dedicated systemd config
 ynh_add_systemd_config
-yunohost service add "$app" --description="File sharing platform" --log="/var/log/$app/$app.log"
+yunohost service add "$app" --description="File sharing platform"
 
 #=================================================
 # START SYSTEMD SERVICE

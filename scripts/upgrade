@@ -42,6 +42,7 @@ chown -R "$app:www-data" "$install_dir"
 #=================================================
 ynh_script_progression --message="Upgrading system configurations related to $app..." --weight=1
 
+# Create a dedicated NGINX config
 ynh_add_nginx_config
 
 # Create a dedicated systemd config
