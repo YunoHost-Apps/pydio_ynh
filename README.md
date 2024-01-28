@@ -16,9 +16,10 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 
 ## Overview
 
-File sharing platform
+Cells V4 now provides secure, cloud-native, scalable, self-hosted, open-core document sharing and collaboration without putting your data at risk.
 
-**Shipped version:** 3.0.9~ynh2
+
+**Shipped version:** 4.3.1~ynh1
 
 ## Screenshots
 

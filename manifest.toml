@@ -7,12 +7,12 @@ name = "Pydio"
 description.en = "File sharing platform"
 description.fr = "Plateforme de partage de fichiers"
 
-version = "3.0.9~ynh2"
+version = "4.3.1~ynh1"
 
 maintainers = ["julienmalik"]
 
 [upstream]
-license = "AGPL-3.0-or-later"
+license = "AGPL-3.0"
 website = "https://pydio.com"
 admindoc = "https://pydio.com/en/docs"
 code = "https://github.com/pydio/cells"
@@ -20,15 +20,16 @@ cpe = "cpe:2.3:a:pydio:cells"
 fund = "https://pydio.com/en/pricing"
 
 [integration]
-yunohost = ">= 11.1.21"
-architectures = ["amd64"]
+yunohost = ">= 11.2"
+architectures = ["amd64", "armhf", "arm64"]
 multi_instance = true
+
 ldap = false
 sso = false
 
 disk = "50M"
-ram.build = "500M"
-ram.runtime = "500M"
+ram.build = "700M"
+ram.runtime = "700M"
 
 [install]
     [install.domain]
@@ -45,9 +46,15 @@ ram.runtime = "500M"
     type = "password"
 
 [resources]
+
+    [resources.sources]
     [resources.sources.main]
-    url = "https://download.pydio.com/pub/cells/release/3.0.9/linux-amd64/pydio-cells-3.0.9-linux-amd64.zip"
-    sha256 = "54b1f92dcaa0204f0b2e6ebb1daff0d4911d0b1c60d68acacfeb6290170dd4a8"
+    amd64.url = "https://download.pydio.com/pub/cells/release/4.3.1/linux-amd64/pydio-cells-4.3.1-linux-amd64.zip"
+    amd64.sha256 = "966337451cf007ff9294f15db830cda128162604bb44ccd91510fae292c790ee"
+    arm64.url = "https://download.pydio.com/pub/cells/release/4.3.1/linux-arm64/pydio-cells-4.3.1-linux-arm64.zip"
+    arm64.sha256 = "840d9a85e15892b52dd549152bef240015584b82feace9137e8b5b1660e80c43"
+    armhf.url = "https://download.pydio.com/pub/cells/release/4.3.1/linux-arm/pydio-cells-4.3.1-linux-arm.zip"
+    armhf.sha256 = "af200d58f3efd917bf8add2a0e8bfb3bc832780cca470070530afa6bb1caefd0"
     in_subdir = false
 
     [resources.system_user]
@@ -66,6 +73,8 @@ ram.runtime = "500M"
 
     [resources.ports]
     main.default = 8080
+    discovery_grpc.default = 50051
+    grpc.default = 50053
 
     [resources.apt]
     packages = [

@@ -16,9 +16,10 @@ Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) po
 
 ## Vue d’ensemble
 
-Plateforme de partage de fichiers
+Cells V4 offre désormais un partage et une collaboration de documents sécurisés, cloud natifs, évolutifs, auto-hébergés et open-core sans mettre vos données en danger.
 
-**Version incluse :** 3.0.9~ynh2
+
+**Version incluse :** 4.3.1~ynh1
 
 ## Captures d’écran
 

@@ -1,7 +1,7 @@
 # Basic no-TLS config for the embedded gateway
 proxyconfig:
   binds:
-    - localhost:__PORT__
+    - 127.0.0.1:__PORT__
   reverseproxyurl: https://__DOMAIN__
   tlsconfig:
       selfsigned:
