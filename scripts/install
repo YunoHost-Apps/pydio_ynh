@@ -32,7 +32,7 @@ ynh_add_config --template="../conf/install-conf.yml" --destination="$install_dir
 ynh_delete_file_checksum --file="$install_dir/install-conf.yml"
 
 pushd "$install_dir"
-    ynh_exec_as "$app" ./cells configure --cli --yaml "./install-conf.yml"
+    ynh_exec_as "$app" env CELLS_WORKING_DIR="$install_dir" ./cells configure --cli --yaml "./install-conf.yml"
 popd
 ynh_secure_remove --file="$install_dir/install-conf.yml"
 
