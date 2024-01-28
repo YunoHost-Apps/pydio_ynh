@@ -28,8 +28,6 @@ ynh_script_progression --message="Ensuring downward compatibility..."
 #=================================================
 ynh_script_progression --message="Upgrading source files..."
 
-ynh_exec_warn ls -lah "$install_dir"
-
 # Download, check integrity, uncompress and patch the source from app.src
 ynh_setup_source --dest_dir="$install_dir" --full_replace=1 --keep=".config .minio"
 
