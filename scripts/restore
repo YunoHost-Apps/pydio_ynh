@@ -17,8 +17,7 @@ ynh_script_progression --message="Restoring the app main directory..." --weight=
 
 ynh_restore_file --origin_path="$install_dir"
 
-chown -R "$app:www-data" "$install_dir"
-chmod +x "$install_dir/cells"
+chown -R $app:www-data "$install_dir"
 
 #=================================================
 # RESTORE THE DATA DIRECTORY
@@ -45,7 +44,6 @@ ynh_restore_file --origin_path="/etc/nginx/conf.d/$domain.d/$app.conf"
 
 ynh_restore_file --origin_path="/etc/systemd/system/$app.service"
 systemctl enable "$app.service" --quiet
-
 yunohost service add "$app" --description="File sharing platform" --log="/var/log/$app/$app.log"
 
 #=================================================
@@ -55,7 +53,7 @@ yunohost service add "$app" --description="File sharing platform" --log="/var/lo
 #=================================================
 ynh_script_progression --message="Reloading NGINX web server and $app's service..." --weight=1
 
-ynh_systemd_action --service_name=$app --action="start" --log_path="systemd"
+ynh_systemd_action --service_name="$app" --action="start" --log_path="systemd" --line_match="Restart done"
 ynh_systemd_action --service_name=nginx --action=reload
 
 #=================================================

@@ -25,7 +25,6 @@ ynh_backup --src_path="$install_dir"
 # BACKUP THE DATA DIR
 #=================================================
 
-# Only relevant if there is a "data_dir" resource for this app
 ynh_backup --src_path="$data_dir" --is_big
 
 #=================================================

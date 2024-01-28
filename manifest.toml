@@ -9,7 +9,7 @@ description.fr = "Plateforme de partage de fichiers"
 
 version = "4.3.1~ynh1"
 
-maintainers = ["salamandar"]
+maintainers = ["julienmalik"]
 
 [upstream]
 license = "AGPL-3.0"
@@ -28,8 +28,8 @@ ldap = false
 sso = false
 
 disk = "50M"
-ram.build = "50M"
-ram.runtime = "50M"
+ram.build = "500M"
+ram.runtime = "500M"
 
 [install]
     [install.domain]
@@ -77,7 +77,10 @@ ram.runtime = "50M"
     grpc.default = 50052
 
     [resources.apt]
-    packages = "mariadb-server"
+    packages = [
+        "acl",
+        "mariadb-server",
+    ]
 
     [resources.database]
     type = "mysql"
