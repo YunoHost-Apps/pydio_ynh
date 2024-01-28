@@ -26,7 +26,7 @@ chown -R "$app:www-data" "$install_dir"
 #=================================================
 # ADD A CONFIGURATION
 #=================================================
-ynh_script_progression --message="Configuring $app..." --weight=1
+ynh_script_progression --message="Adding a configuration file..." --weight=1
 
 ynh_add_config --template="../conf/install-conf.yml" --destination="$install_dir/install-conf.yml"
 ynh_delete_file_checksum --file="$install_dir/install-conf.yml"
