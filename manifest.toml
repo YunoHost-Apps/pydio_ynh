@@ -74,7 +74,7 @@ ram.runtime = "700M"
     [resources.ports]
     main.default = 8080
     discovery_grpc.default = 50051
-    grpc.default = 50052
+    grpc.default = 50053
 
     [resources.apt]
     packages = [
