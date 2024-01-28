@@ -19,4 +19,4 @@ dbtcpname: __DB_NAME__
 dbtcpuser: __DB_USER__
 dbtcppassword: __DB_PWD__
 
-dsfolder: __DATADIR__
+dsfolder: __DATA_DIR__
