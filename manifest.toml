@@ -1,3 +1,5 @@
+#:schema https://raw.githubusercontent.com/YunoHost/apps/master/schemas/manifest.v2.schema.json
+
 packaging_format = 2
 
 id = "pydio"
@@ -23,7 +25,6 @@ architectures = ["amd64", "armhf", "arm64"]
 multi_instance = true
 
 ldap = false
-
 sso = false
 
 disk = "50M"
@@ -47,14 +48,14 @@ ram.runtime = "50M"
 [resources]
 
     [resources.sources]
-
-        [resources.sources.main]
-        amd64.url = "https://download.pydio.com/pub/cells/release/4.3.1/linux-amd64/pydio-cells-4.3.1-linux-amd64.zip"
-        amd64.sha256 = "966337451cf007ff9294f15db830cda128162604bb44ccd91510fae292c790ee"
-        armhf.url = "https://download.pydio.com/pub/cells/release/4.3.1/linux-arm/pydio-cells-4.3.1-linux-arm.zip"
-        armhf.sha256 = "af200d58f3efd917bf8add2a0e8bfb3bc832780cca470070530afa6bb1caefd0"
-        arm64.url = "https://download.pydio.com/pub/cells/release/4.3.1/linux-arm64/pydio-cells-4.3.1-linux-arm64.zip"
-        arm64.sha256 = "840d9a85e15892b52dd549152bef240015584b82feace9137e8b5b1660e80c43"
+    [resources.sources.main]
+    amd64.url = "https://download.pydio.com/pub/cells/release/4.3.1/linux-amd64/pydio-cells-4.3.1-linux-amd64.zip"
+    amd64.sha256 = "966337451cf007ff9294f15db830cda128162604bb44ccd91510fae292c790ee"
+    arm64.url = "https://download.pydio.com/pub/cells/release/4.3.1/linux-arm64/pydio-cells-4.3.1-linux-arm64.zip"
+    arm64.sha256 = "840d9a85e15892b52dd549152bef240015584b82feace9137e8b5b1660e80c43"
+    armhf.url = "https://download.pydio.com/pub/cells/release/4.3.1/linux-arm/pydio-cells-4.3.1-linux-arm.zip"
+    armhf.sha256 = "af200d58f3efd917bf8add2a0e8bfb3bc832780cca470070530afa6bb1caefd0"
+    in_subdir = false
 
     [resources.system_user]
 
