@@ -44,7 +44,7 @@ ynh_restore_file --origin_path="/etc/nginx/conf.d/$domain.d/$app.conf"
 
 ynh_restore_file --origin_path="/etc/systemd/system/$app.service"
 systemctl enable "$app.service" --quiet
-yunohost service add "$app" --description="File sharing platform" --log="/var/log/$app/$app.log"
+yunohost service add "$app" --description="File sharing platform"
 
 #=================================================
 # GENERIC FINALIZATION
