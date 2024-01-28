@@ -46,8 +46,8 @@ ram.runtime = "50M" # FIXME: replace with an **estimate** minimum ram requiremen
 
 [resources]
     [resources.sources.main]
-    url = "https://download.pydio.com/pub/cells/release/3.0.9/linux-amd64/cells"
-    sha256 = "4272ca1e10f2ca08d08d7d08d440d4b6e3d09ba37235f54bdbac1ac7c29b2aaa"
+    url = "https://download.pydio.com/pub/cells/release/3.0.9/linux-amd64/pydio-cells-3.0.9-linux-amd64.zip"
+    sha256 = "54b1f92dcaa0204f0b2e6ebb1daff0d4911d0b1c60d68acacfeb6290170dd4a8"
     in_subdir = false
 
     [resources.system_user]
