@@ -14,7 +14,7 @@ maintainers = ["julienmalik"]
 [upstream]
 license = "AGPL-3.0-or-later"
 website = "https://pydio.com"
-admindoc = "https://pydio.com/en/docs/"
+admindoc = "https://pydio.com/en/docs"
 code = "https://github.com/pydio/cells"
 cpe = "cpe:2.3:a:pydio:cells"
 fund = "https://pydio.com/en/pricing"

@@ -27,7 +27,7 @@ File sharing platform
 ## Documentation and resources
 
 * Official app website: <https://pydio.com>
-* Official admin documentation: <https://pydio.com/en/docs/>
+* Official admin documentation: <https://pydio.com/en/docs>
 * Upstream app code repository: <https://github.com/pydio/cells>
 * YunoHost Store: <https://apps.yunohost.org/app/pydio>
 * Report a bug: <https://github.com/YunoHost-Apps/pydio_ynh/issues>
