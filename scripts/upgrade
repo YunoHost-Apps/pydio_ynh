@@ -24,7 +24,7 @@ ynh_systemd_action --service_name="$app" --action="stop"
 ynh_script_progression --message="Ensuring downward compatibility..." --weight=1
 
 # Previous installs might have been listening on local ipv6
-if ynh_compare_current_package_version --comparison lt "4.3.1~ynh1"; then
+if ynh_compare_current_package_version --comparison lt --version "4.3.1~ynh1"; then
     jq ".defaults.sites[0].Binds[0] = \"127.0.0.1:$port\"" "$install_dir/.config/pydio/cells/pydio.json" \
         > "$install_dir/_pydio.json"
     mv "$install_dir/_pydio.json" "$install_dir/.config/pydio/cells/pydio.json"
