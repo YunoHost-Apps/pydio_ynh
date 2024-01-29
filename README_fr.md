@@ -16,9 +16,10 @@ Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) po
 
 ## Vue d’ensemble
 
-Plateforme de partage de fichiers
+Cells V4 offre désormais un partage et une collaboration de documents sécurisés, cloud natifs, évolutifs, auto-hébergés et open-core sans mettre vos données en danger.
 
-**Version incluse :** 3.0.9~ynh1
+
+**Version incluse :** 4.3.1~ynh1
 
 ## Captures d’écran
 
@@ -27,7 +28,7 @@ Plateforme de partage de fichiers
 ## Documentations et ressources
 
 * Site officiel de l’app : <https://pydio.com>
-* Documentation officielle de l’admin : <https://pydio.com/en/docs/>
+* Documentation officielle de l’admin : <https://pydio.com/en/docs>
 * Dépôt de code officiel de l’app : <https://github.com/pydio/cells>
 * YunoHost Store: <https://apps.yunohost.org/app/pydio>
 * Signaler un bug : <https://github.com/YunoHost-Apps/pydio_ynh/issues>

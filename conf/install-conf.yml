@@ -1,7 +1,7 @@
 # Basic no-TLS config for the embedded gateway
 proxyconfig:
   binds:
-    - localhost:__PORT__
+    - 127.0.0.1:__PORT__
   reverseproxyurl: https://__DOMAIN__
   tlsconfig:
       selfsigned:
@@ -19,4 +19,4 @@ dbtcpname: __DB_NAME__
 dbtcpuser: __DB_USER__
 dbtcppassword: __DB_PWD__
 
-dsfolder: __DATADIR__
+dsfolder: __DATA_DIR__
