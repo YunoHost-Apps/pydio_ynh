@@ -7,7 +7,7 @@ name = "Pydio"
 description.en = "File sharing platform"
 description.fr = "Plateforme de partage de fichiers"
 
-version = "4.3.1~ynh1"
+version = "4.3.4~ynh1"
 
 maintainers = ["julienmalik"]
 
