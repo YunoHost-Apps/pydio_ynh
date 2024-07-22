@@ -5,7 +5,7 @@ NON debe editarse manualmente.
 
 # Pydio para YunoHost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/pydio.svg)](https://dash.yunohost.org/appci/app/pydio) ![Estado de funcionamento](https://ci-apps.yunohost.org/ci/badges/pydio.status.svg) ![Estado de mantemento](https://ci-apps.yunohost.org/ci/badges/pydio.maintain.svg)
+[![Nivel de integración](https://dash.yunohost.org/integration/pydio.svg)](https://ci-apps.yunohost.org/ci/apps/pydio/) ![Estado de funcionamento](https://ci-apps.yunohost.org/ci/badges/pydio.status.svg) ![Estado de mantemento](https://ci-apps.yunohost.org/ci/badges/pydio.maintain.svg)
 
 [![Instalar Pydio con YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=pydio)
 
