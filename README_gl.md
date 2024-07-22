@@ -19,7 +19,7 @@ NON debe editarse manualmente.
 Cells V4 now provides secure, cloud-native, scalable, self-hosted, open-core document sharing and collaboration without putting your data at risk.
 
 
-**Versión proporcionada:** 4.3.4~ynh1
+**Versión proporcionada:** 4.3.4~ynh2
 
 ## Capturas de pantalla
 

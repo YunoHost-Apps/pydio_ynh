@@ -19,7 +19,7 @@ Il NE doit PAS être modifié à la main.
 Cells V4 offre désormais un partage et une collaboration de documents sécurisés, cloud natifs, évolutifs, auto-hébergés et open-core sans mettre vos données en danger.
 
 
-**Version incluse :** 4.3.4~ynh1
+**Version incluse :** 4.3.4~ynh2
 
 ## Captures d’écran
 
