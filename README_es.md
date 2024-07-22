@@ -5,7 +5,7 @@ No se debe editar a mano.
 
 # Pydio para Yunohost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/pydio.svg)](https://dash.yunohost.org/appci/app/pydio) ![Estado funcional](https://ci-apps.yunohost.org/ci/badges/pydio.status.svg) ![Estado En Mantención](https://ci-apps.yunohost.org/ci/badges/pydio.maintain.svg)
+[![Nivel de integración](https://dash.yunohost.org/integration/pydio.svg)](https://ci-apps.yunohost.org/ci/apps/pydio/) ![Estado funcional](https://ci-apps.yunohost.org/ci/badges/pydio.status.svg) ![Estado En Mantención](https://ci-apps.yunohost.org/ci/badges/pydio.maintain.svg)
 
 [![Instalar Pydio con Yunhost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=pydio)
 
@@ -19,7 +19,7 @@ No se debe editar a mano.
 Cells V4 now provides secure, cloud-native, scalable, self-hosted, open-core document sharing and collaboration without putting your data at risk.
 
 
-**Versión actual:** 4.3.4~ynh1
+**Versión actual:** 4.3.4~ynh2
 
 ## Capturas
 
