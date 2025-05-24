@@ -1,5 +1,5 @@
 [Unit]
-Description=Pydio Cells
+Description=Pydio: File sharing platform
 Documentation=https://pydio.com
 Wants=network-online.target
 After=network-online.target
