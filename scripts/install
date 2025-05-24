@@ -23,9 +23,7 @@ ynh_delete_file_checksum "$install_dir/install-conf.yml"
 
 pushd "$install_dir"
     # See https://pydio.com/fr/docs/cells/v4/working-directories
-    ynh_exec_as_app \
-        CELLS_DATA_DIR="$data_dir" \
-        ./cells configure --cli --yaml "./install-conf.yml"
+    ynh_exec_as_app CELLS_DATA_DIR="$data_dir" ./cells configure --cli --yaml "./install-conf.yml"
 popd
 
 ynh_safe_rm "$install_dir/install-conf.yml"
@@ -40,6 +38,7 @@ ynh_config_add_nginx
 
 # Create a dedicated systemd config
 ynh_config_add_systemd
+
 yunohost service add "$app" --description="File sharing platform"
 
 #=================================================
