@@ -13,9 +13,6 @@ ynh_setup_source --dest_dir="$install_dir"
 
 chmod +x "$install_dir/cells"
 
-#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod 750 "$install_dir"
-#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod -R o-rwx "$install_dir"
-#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown -R "$app:www-data" "$install_dir"
 #=================================================
 # ADD A CONFIGURATION
 #=================================================
@@ -30,6 +27,7 @@ pushd "$install_dir"
         CELLS_DATA_DIR="$data_dir" \
         ./cells configure --cli --yaml "./install-conf.yml"
 popd
+
 ynh_safe_rm "$install_dir/install-conf.yml"
 
 #=================================================
@@ -55,4 +53,5 @@ ynh_systemctl --service="$app" --action="start" --log_path="systemd"
 #=================================================
 # END OF SCRIPT
 #=================================================
+
 ynh_script_progression "Installation of $app completed"
