@@ -63,7 +63,6 @@ ram.runtime = "700M"
     [resources.install_dir]
 
     [resources.data_dir]
-    group = "www-data:rwx"
 
     [resources.permissions]
     main.url = "/"
