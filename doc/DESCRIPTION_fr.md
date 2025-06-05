@@ -1,1 +1,1 @@
-Cells V4 offre désormais un partage et une collaboration de documents sécurisés, cloud natifs, évolutifs, auto-hébergés et open-core sans mettre vos données en danger.
+Pydio Cells est la nouvelle plateforme de partage de fichiers pour les organisations. Il s'agit d'une réécriture complète du projet Pydio en utilisant le langage Go et en suivant une architecture de micro-services.

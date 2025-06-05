@@ -20,7 +20,8 @@ cpe = "cpe:2.3:a:pydio:cells"
 fund = "https://pydio.com/en/pricing"
 
 [integration]
-yunohost = ">= 11.2"
+yunohost = ">= 12.0.9"
+helpers_version = "2.1"
 architectures = ["amd64", "armhf", "arm64"]
 multi_instance = true
 
@@ -62,7 +63,6 @@ ram.runtime = "700M"
     [resources.install_dir]
 
     [resources.data_dir]
-    group = "www-data:rwx"
 
     [resources.permissions]
     main.url = "/"
