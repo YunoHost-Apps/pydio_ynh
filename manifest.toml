@@ -7,7 +7,7 @@ name = "Pydio"
 description.en = "File sharing platform"
 description.fr = "Plateforme de partage de fichiers"
 
-version = "4.4.13~ynh1"
+version = "4.4.17~ynh1"
 
 maintainers = ["julienmalik"]
 
@@ -50,12 +50,12 @@ ram.runtime = "700M"
 
     [resources.sources]
     [resources.sources.main]
-    amd64.url = "https://download.pydio.com/pub/cells/release/4.4.13/linux-amd64/pydio-cells-4.4.13-linux-amd64.zip"
-    amd64.sha256 = "bfaccab28c6605e3b63801b94c5dd3ac0bf517080289e7e12e441d648964addc"
-    arm64.url = "https://download.pydio.com/pub/cells/release/4.4.13/linux-arm64/pydio-cells-4.4.13-linux-arm64.zip"
-    arm64.sha256 = "59c4a7a726c6dfb1d579abe3a7fd4e09bc3aa6ec28ff8a7c76ac893721d22af6"
-    armhf.url = "https://download.pydio.com/pub/cells/release/4.4.13/linux-arm/pydio-cells-4.4.13-linux-arm.zip"
-    armhf.sha256 = "ebbd4758fe9539ccc0ae81b61580fbb1b2a6e066a321255ba3b7fa4e8b990374"
+    amd64.url = "https://download.pydio.com/pub/cells/release/4.4.17/linux-amd64/pydio-cells-4.4.17-linux-amd64.zip"
+    amd64.sha256 = "94cd5ce5f99bdb44d5f8a9862f8d4273c5a8d7228b3eb658def7d8a5bb035da0"
+    arm64.url = "https://download.pydio.com/pub/cells/release/4.4.17/linux-arm64/pydio-cells-4.4.17-linux-arm64.zip"
+    arm64.sha256 = "abbc2444c3069e7309289b58bd888d0cddcac9b44a4f7702846ed80748c8deb1"
+    armhf.url = "https://download.pydio.com/pub/cells/release/4.4.17/linux-arm/pydio-cells-4.4.17-linux-arm.zip"
+    armhf.sha256 = "53adfa3a7992e8054f97b2df58359c1630025c7f436fe29d2209025048d8db6f"
     in_subdir = false
 
     [resources.system_user]
